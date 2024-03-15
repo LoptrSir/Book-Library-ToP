@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  color: aliceblue;
 }
 
 body {
@@ -18,21 +19,23 @@ body {
 .container {
   height: 100%;
   display: grid;
-  grid-template-columns:
-    minmax(200px, 1fr) minmax(400px, 2fr) minmax(200px, 1fr)
-    minmax(200px, 1fr);
+  grid-template-columns: 1fr 3fr;
+  /* minmax(200px, 1fr) minmax(400px, 2fr) minmax(200px, 1fr)
+      minmax(200px, 1fr); */
   grid-template-rows: minmax(10px, 0.25fr) repeat(2, minmax(150px, 1fr)) minmax(
       10px,
       0.25fr
     );
   gap: 1em;
-  background-color: bisque;
+  background-image: url("bookcase.jpg");
+  /* background-color: bisque; */
 }
 
 #header {
-  grid-column: 1/5;
+  grid-column: 1/4;
   grid-row: 1;
-  background-color: aquamarine;
+  background-color: rgba(0, 0, 0, 0);
+  /* background-color: aquamarine; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +46,8 @@ body {
 .entry {
   grid-column: 1;
   grid-row: 2/4;
-  background-color: khaki;
+  background-color: rgba(0, 0, 0, 0);
+  /* background-color: khaki; */
   display: flex;
   flex-direction: column;
   padding: 1em;
@@ -61,31 +65,57 @@ body {
 .enter {
   display: flex;
   flex-direction: column;
+  /* gap: 10px; */
   margin-bottom: 0.7em;
 }
 
-.bookCase {
-  background-color: rgb(185, 176, 240);
-  grid-column: 2/5;
+/* label{
+color:aliceblue
+} */
+
+input {
+  background-color: rgb(240, 248, 255, 0.2);
+  color: rgba(240, 248, 255, 1);
+}
+
+button#addBook {
+  background-color: rgb(223, 113, 238, 0.3);
+  color: rgb(240, 248, 255, .9);
+}
+::placeholder {
+  color: rgb(240, 248, 255, .6);
+}
+
+.bookcase {
+  background-color: rgba(0, 0, 0, 0);
+  border: solid 2px black;
+  grid-column: 2/4;
   grid-row: 2/4;
   padding: 10px;
   gap: 10px;
 }
 
-.library {
+.bookContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(13em, 1fr));
-  background-color: rgb(185, 176, 240);
+  background-color: rgba(0, 0, 0, 0);
   margin: 5px;
   gap: 15px;
   padding: 5px;
   max-height: calc(100vh - 6rem);
 }
 
-.book {
+.bookCard {
   border: solid 1px black;
-  background-color: rgb(235, 170, 243);
+  background-color: rgb(235, 170, 243, 0.3);
   padding: 1em;
+  gap: 1rem;
+}
+
+.bookCard button {
+  margin-right: 1rem;
+  background-color: rgb(223, 113, 238, 0.3);
+  color: rgb(240, 248, 255, 0.8);
 }
 
 .delete {
@@ -93,10 +123,13 @@ body {
 }
 
 footer {
-  grid-column: 1/5;
+  grid-column: 1/4;
   grid-row: 4;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: pink;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
