@@ -1,3 +1,4 @@
+
 class Book {
   constructor(title, author, pages, read) {
     this.title = title;
@@ -11,9 +12,9 @@ class Library {
   constructor() {
     this.myLibrary = [
       {
-        title: "HardCode",
+        title: "HardCoded",
         author: "Sir Not Appearing",
-        pages: "infinite",
+        pages: 666,
         read: false,
       },
     ];
@@ -34,10 +35,7 @@ class Library {
     const readStatement = document.getElementById("read-statement");
     const pagesStatement = document.getElementById("pages-statement");
 
-    const isPagesValid = /^\d+$/.test(pages);
-    const isReadValid = /^(y|yes|n|no)$/.test(readValue);
-
-    if (title && author && isPagesValid && isReadValid) {
+    if (title && author && pages && readValue) {
       const newBook = new Book(title, author, pages, readValue);
       this.myLibrary.push(newBook);
 
@@ -48,18 +46,8 @@ class Library {
       readInput.value = "";
       readStatement.textContent = "";
       pagesStatement.textContent = "";
-    } else {
-      if (!isPagesValid) {
-        pagesStatement.textContent = "Pages must be a number";
-      } else {
-        pagesStatement.textContent = "";
-      }
-      if (!isReadValid) {
-        readStatement.textContent = "Enter Yes or No";
-      } else {
-        readStatement.textContent = "";
-      }
     }
+
     this.displayBookcase();
   }
 
@@ -121,11 +109,15 @@ class Library {
 
   bookToRead(index) {
     this.myLibrary[index].read = true;
-    //console.log("brc-", this.myLibrary[index].read);
     this.displayBookcase();
-    //console.log("brc1-", this.myLibrary[index].read);
   }
 }
 
-const myLibraryInstance = new Library();
-myLibraryInstance.displayBookcase();
+const libraryInstance = new Library();
+
+document.querySelector("#addBook").addEventListener("click", function (e) {
+  e.preventDefault();
+  libraryInstance.addBookToLibrary();
+});
+
+libraryInstance.displayBookcase();
